@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { INewIpLocation } from 'src/app/interfaces/Ip-geolocation';
 import { IpGeolocationService } from 'src/app/services/ip-geolocation.service';
+import { LeafletService } from 'src/app/services/leaflet.service';
 
 @Component({
   selector: 'app-map',
@@ -11,7 +12,10 @@ export class MapComponent implements OnInit {
   ipAddress!: string;
   ipLocation!: INewIpLocation;
 
-  constructor(private ipGeoLocationService: IpGeolocationService) {}
+  constructor(
+    private ipGeoLocationService: IpGeolocationService,
+    private leafletService: LeafletService
+  ) {}
 
   ngOnInit() {
     this.ipGeoLocationService.getLocation('').subscribe({
@@ -33,5 +37,8 @@ export class MapComponent implements OnInit {
         console.error('An error occurred:', err);
       },
     });
+
+    this.leafletService.initMap('map', [51.505, -0.09], 13);
+    this.leafletService.addMarker([51.5, -0.09], 'Hello, world!');
   }
 }
