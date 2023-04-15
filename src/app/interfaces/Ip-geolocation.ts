@@ -1,4 +1,4 @@
-export interface IpGeolocation {
+export interface IIpGeolocation {
   ip: string;
   location: {
     city: string;
@@ -6,7 +6,7 @@ export interface IpGeolocation {
     geonameId: number;
     lat: number;
     lng: number;
-    postalCode: '';
+    postalCode: string;
     region: string;
     timezone: string;
   };

@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, map } from 'rxjs';
+import { IIpGeolocation } from '../interfaces/Ip-geolocation';
 
 @Injectable({
   providedIn: 'root',
@@ -13,7 +14,7 @@ export class IpGeolocationService {
 
   getLocation(ipAddress: string): Observable<any> {
     const url = `${this.apiUrl}?apiKey=${this.apiKey}&ipAddress=${ipAddress}`;
-    return this.http.get<any>(url).pipe(
+    return this.http.get<IIpGeolocation>(url).pipe(
       map((data) => {
         console.log('data', data);
         console.log('data_ip', data.ip);
@@ -21,8 +22,14 @@ export class IpGeolocationService {
         return {
           ipAddress: data.ip,
           location: {
+            city: data.location.city,
+            country: data.location.country,
+            geonameId: data.location.geonameId,
             lat: data.location.lat,
             lng: data.location.lng,
+            postalCode: data.location.postalCode,
+            region: data.location.region,
+            timezone: data.location.region,
           },
         };
       })
