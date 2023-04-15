@@ -1,4 +1,4 @@
 <div>{{ ipAddress }}</div>
-<div *ngFor="let item of ipLocation | keyvalue">
-  <b>{{ item.key }}</b> : {{ item.value }}
+<div *ngFor="let location of ipLocation | keyvalue">
+  <b>{{ location.key }}</b> : {{ location.value }}
 </div>

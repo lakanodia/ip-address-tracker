@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { INewIpLocation } from 'src/app/interfaces/Ip-geolocation';
 import { IpGeolocationService } from 'src/app/services/ip-geolocation.service';
 
 @Component({
@@ -8,7 +9,7 @@ import { IpGeolocationService } from 'src/app/services/ip-geolocation.service';
 })
 export class MapComponent implements OnInit {
   ipAddress!: string;
-  ipLocation!: any;
+  ipLocation!: INewIpLocation;
 
   constructor(private ipGeoLocationService: IpGeolocationService) {}
 

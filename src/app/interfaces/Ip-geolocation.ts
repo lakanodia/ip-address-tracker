@@ -12,16 +12,14 @@ export interface IIpGeolocation {
   };
 }
 
-export type INewIpLocation = Array<
-  Pick<
-    IIpGeolocation['location'],
-    | 'city'
-    | 'country'
-    | 'geonameId'
-    | 'lat'
-    | 'lng'
-    | 'postalCode'
-    | 'region'
-    | 'timezone'
-  >
+export type INewIpLocation = Pick<
+  IIpGeolocation['location'],
+  | 'city'
+  | 'country'
+  | 'geonameId'
+  | 'lat'
+  | 'lng'
+  | 'postalCode'
+  | 'region'
+  | 'timezone'
 >;
