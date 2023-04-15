@@ -16,9 +16,6 @@ export class IpGeolocationService {
     const url = `${this.apiUrl}?apiKey=${this.apiKey}&ipAddress=${ipAddress}`;
     return this.http.get<IIpGeolocation>(url).pipe(
       map((data) => {
-        console.log('data', data);
-        console.log('data_ip', data.ip);
-        console.log('data_locations', data.location);
         return {
           ipAddress: data.ip,
           location: {
@@ -29,7 +26,7 @@ export class IpGeolocationService {
             lng: data.location.lng,
             postalCode: data.location.postalCode,
             region: data.location.region,
-            timezone: data.location.region,
+            timezone: data.location.timezone,
           },
         };
       })
