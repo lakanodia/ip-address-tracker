@@ -43,7 +43,8 @@ export class MapComponent implements OnInit {
         );
         this.leafletService.addMarker(
           [this.ipLocation.lat, this.ipLocation.lng],
-          'Hello, I am here!'
+
+          `Hello this is ${this.ipLocation.region}`
         );
       },
       error: (err) => {
@@ -68,11 +69,12 @@ export class MapComponent implements OnInit {
         };
         this.leafletService.addMarker(
           [this.ipLocation.lat, this.ipLocation.lng],
-          'Hello, I am here!'
+          `Hello this is ${this.ipLocation.region}`
         );
       },
       error: (err) => {
         console.error('An error occurred:', err);
+        alert('Error');
       },
     });
   }

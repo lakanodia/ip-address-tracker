@@ -1,6 +1,23 @@
-<input type="text" [(ngModel)]="searchInput" (keyup.enter)="searchIp()" />
-<div><b>IP:</b> {{ ipAddress }}</div>
-<div *ngFor="let location of ipLocation | keyvalue">
-  <b>{{ location.key }}</b> : {{ location.value }}
+<div class="wrap">
+  <div class="Wrapper">
+    <h1 class="Title">IP Address Tracker</h1>
+    <div class="Input">
+      <input
+        type="text"
+        id="input"
+        class="Input-text"
+        [(ngModel)]="searchInput"
+        (keyup.enter)="searchIp()"
+        placeholder="Search by IP"
+      />
+    </div>
+  </div>
+
+  <div class="info-div">
+    <div><b>IP:</b> {{ ipAddress }}</div>
+    <div *ngFor="let location of ipLocation | keyvalue">
+      <b>{{ location.key }}</b> : {{ location.value }}
+    </div>
+  </div>
+  <div id="map"></div>
 </div>
-<div id="map"></div>
