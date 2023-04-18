@@ -11,6 +11,7 @@ import { LeafletService } from 'src/app/services/leaflet.service';
 export class MapComponent implements OnInit {
   ipAddress!: string;
   ipLocation!: INewIpLocation;
+  searchInput!: string;
 
   constructor(
     private ipGeoLocationService: IpGeolocationService,
@@ -18,6 +19,10 @@ export class MapComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.getIpInfo();
+  }
+
+  getIpInfo() {
     this.ipGeoLocationService.getLocation('').subscribe({
       next: (data) => {
         this.ipAddress = data.ipAddress;
@@ -31,13 +36,36 @@ export class MapComponent implements OnInit {
           region: data.location.region,
           timezone: data.location.timezone,
         };
-        // console.log(this.ipLocation);
-
         this.leafletService.initMap(
           'map',
           [this.ipLocation.lat, this.ipLocation.lng],
-          13
+          15
         );
+        this.leafletService.addMarker(
+          [this.ipLocation.lat, this.ipLocation.lng],
+          'Hello, I am here!'
+        );
+      },
+      error: (err) => {
+        console.error('An error occurred:', err);
+      },
+    });
+  }
+
+  searchIp() {
+    this.ipGeoLocationService.getLocation(this.searchInput).subscribe({
+      next: (data) => {
+        this.ipAddress = data.ipAddress;
+        this.ipLocation = {
+          city: data.location.city,
+          country: data.location.country,
+          geonameId: data.location.geonameId,
+          lat: data.location.lat,
+          lng: data.location.lng,
+          postalCode: data.location.postalCode,
+          region: data.location.region,
+          timezone: data.location.timezone,
+        };
         this.leafletService.addMarker(
           [this.ipLocation.lat, this.ipLocation.lng],
           'Hello, I am here!'
