@@ -146,3 +146,16 @@ body {
   transition: transform var(--inputTransitionDuration), visibility 0ms,
     z-index 0ms;
 }
+
+@media (max-width: 950px) {
+  .wrap {
+    width: 500px;
+  }
+}
+
+@media (max-width: 750px) {
+  .wrap {
+    width: 290px;
+    margin-left: 50px;
+  }
+}
