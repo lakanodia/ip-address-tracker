@@ -31,14 +31,21 @@ export class MapComponent implements OnInit {
           region: data.location.region,
           timezone: data.location.timezone,
         };
-        console.log(this.ipLocation);
+        // console.log(this.ipLocation);
+
+        this.leafletService.initMap(
+          'map',
+          [this.ipLocation.lat, this.ipLocation.lng],
+          13
+        );
+        this.leafletService.addMarker(
+          [this.ipLocation.lat, this.ipLocation.lng],
+          'Hello, I am here!'
+        );
       },
       error: (err) => {
         console.error('An error occurred:', err);
       },
     });
-
-    this.leafletService.initMap('map', [51.505, -0.09], 13);
-    this.leafletService.addMarker([51.5, -0.09], 'Hello, world!');
   }
 }

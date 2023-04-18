@@ -14,13 +14,12 @@ export class LeafletService {
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       attribution:
         'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors',
-      maxZoom: 18,
+      maxZoom: 30,
     }).addTo(this.map);
   }
 
   addMarker(coords: [number, number], popupText: string) {
     const marker = L.marker(coords).addTo(this.map);
-
     if (popupText) {
       marker.bindPopup(popupText).openPopup();
     }

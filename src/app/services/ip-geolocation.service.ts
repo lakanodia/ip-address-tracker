@@ -9,7 +9,7 @@ import { IIpGeolocation } from '../interfaces/Ip-geolocation';
 export class IpGeolocationService {
   private apiUrl = 'https://geo.ipify.org/api/v1';
   private apiKey = 'at_EsaDXkMbPwwFlCBEkTh8cH2rTqbe6';
-
+  
   constructor(private http: HttpClient) {}
 
   getLocation(ipAddress: string): Observable<any> {
